@@ -54,13 +54,59 @@ The code and data used in this study are publicly available in this repository f
   <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/video_954%20(5)%2000_00_00-00_00_30.gif" width="200" />
 </div>
 
-## Benchmark
+## Processing pipeline
 
 We implemented a dedicated video processing pipeline to segment all MP4, AVI, and MKV files from the original directories into shorter clips, followed by cropping and re-encoding. Specifically, for each video file, we first calculated its total duration and split it into segments of 5 seconds in length. Any remaining segment with a duration between 3 and 5 seconds was retained; if the remaining duration was between 2 and 3 seconds, it was merged with the previous clip to ensure a minimum length of 1 second. Subsequently, we processed each segment using FFmpeg, including trimming from specified start times, resizing to a resolution of 512×512 pixels, copying the audio stream without re-encoding, and setting the bitrate to 3000k to balance processing speed and quality.
 <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/figure03.png" />
 
-## Benchmark
+## Dataset Generation Methods
+**V-Express** [@wang2024vexpressconditionaldropoutprogressive]:  
+By progressively dropping strong signals, the proposed strategy effectively balances multimodal conditions, enabling weak signals to gradually participate in control, thereby achieving coordinated pose, image, and audio-driven generation of highly synchronized deepfake videos.
 
+**Sonic** [@ji2024sonicshiftingfocusglobal]:  
+Sonic employs time-aware fusion across video segments to disentangle head motion from facial expressions. By leveraging long-range audio context, it achieves continuous and natural motion synthesis, enabling the generation of coherent and realistic deepfake videos.
+
+**EchoMimic** [@chen2024echomimiclifelikeaudiodrivenportrait]:  
+By integrating hybrid conditioning of audio and facial keypoints, and employing regional mapping alongside motion synchronization strategies, this method generates deepfake videos featuring highly natural facial expressions and stable audio-visual synchronization.
+
+**Hallo** [@xu2024hallohierarchicalaudiodrivenvisual]:  
+A latent diffusion model with hierarchical audio-driven visual synthesis is employed, combined with a multi-level cross-attention mechanism to achieve finer audio-visual alignment, thereby enhancing the continuity and realism of the synthesized videos.
+
+**Hallo2** [@cui2024hallo2longdurationhighresolutionaudiodriven]:  
+Hallo2 is optimized for long-duration and ultra-high-resolution video generation. Employing vector quantization (VQ)-based encoding combined with a temporal alignment mechanism, it enables stable synthesis of long-form deepfake videos.
+
+**CosyVoice 2** [@du2024cosyvoice2scalablestreaming]:  
+By employing multi-stage semantic decoding and conditional flow matching techniques, along with a unified streaming and non-streaming language model design, this approach provides an efficient and stable foundation for speech synthesis in audio-driven digital human videos.
+
+## Benchmark
 We benchmark nine representative forgery detection methods using the DigiFakeAV dataset，These methods encompass six distinct cate-gories: Basic (Naive), Spatial, Temporal, Frequency, Hybrid Domain, and Multi-modal approaches. Please refer to our paper for more information.
+
+- **Meso4** [@Afchar_2018]:  
+  A lightweight convolutional neural network architecture designed for efficient extraction of facial forgery features, facilitating rapid deepfake detection.
+
+- **MesoInception4** [@Afchar_2018]:  
+  An extension of Meso4 that integrates Inception modules to enhance multi-scale feature representation and capture more discriminative cues.
+
+- **Xception-c23** [@rössler2019faceforensicslearningdetectmanipulated]:  
+  A deepfake detection approach based on the Xception architecture, leveraging depthwise separable convolutions for improved feature extraction and model efficiency.
+
+- **Capsule** [@nguyen2019usecapsulenetworkdetect]:  
+  A classification method employing capsule networks to preserve hierarchical pose relationships and improve robustness against spatial transformations.
+
+- **HeadPose** [@yang2018exposingdeepfakesusing]:  
+  A technique that utilizes head pose estimation as discriminative features for classification between genuine and forged videos.
+
+- **F3-Net** [@qian2020thinkingfrequencyfaceforgery]:  
+  A method that discriminates forged videos by extracting statistical features from the local frequency domain, effectively capturing subtle forgery artifacts.
+
+- **Cross Efficient ViT** [@Coccomini_2022]:  
+  An approach that incorporates ViT architectures augmented with a voting mechanism to robustly identify deepfake content.
+
+- **SFIConv** [@10286083]:  
+  A method to combine information from the spatial and frequency domains using a modified convolutional backbone network to enhance detection capabilities of counterfeit features.
+
+- **SSVF** [@feng2023selfsupervisedvideoforensicsaudiovisual]:  
+  A framework exploiting the intrinsic synchronization between visual and audio streams, employing autoregressive models to learn temporal dependencies characteristic of authentic videos and detect anomalies effectively.
+
 <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/QQ20250513-153623.png" />
 
