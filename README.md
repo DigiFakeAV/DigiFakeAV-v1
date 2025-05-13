@@ -12,7 +12,7 @@ The code and data used in this study are publicly available in this repository f
 From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos representing diverse ethnicities, genders, and ages. These videos were further processed to crop the upper body region, forming the basis of our real video dataset.
 <div style="
   display: grid; 
-  grid-template-columns: repeat(3, 200px); 
+  grid-template-columns: repeat(3, 180px); 
   justify-content: center; 
   gap: 10px;
   margin: 0 auto;
