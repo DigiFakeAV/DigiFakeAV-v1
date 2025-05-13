@@ -55,6 +55,11 @@ The code and data used in this study are publicly available in this repository f
 
 ## Benchmark
 
+We implemented a dedicated video processing pipeline to segment all MP4, AVI, and MKV files from the original directories into shorter clips, followed by cropping and re-encoding. Specifically, for each video file, we first calculated its total duration and split it into segments of 5 seconds in length. Any remaining segment with a duration between 3 and 5 seconds was retained; if the remaining duration was between 2 and 3 seconds, it was merged with the previous clip to ensure a minimum length of 1 second. Subsequently, we processed each segment using FFmpeg, including trimming from specified start times, resizing to a resolution of 512×512 pixels, copying the audio stream without re-encoding, and setting the bitrate to 3000k to balance processing speed and quality.
+<img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/figure03.png" />
+
+## Benchmark
+
 We benchmark nine representative forgery detection methods using the DigiFakeAV dataset，These methods encompass six distinct cate-gories: Basic (Naive), Spatial, Temporal, Frequency, Hybrid Domain, and Multi-modal approaches. Please refer to our paper for more information.
 <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/QQ20250513-153623.png" />
 
