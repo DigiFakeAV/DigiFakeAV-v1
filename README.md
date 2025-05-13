@@ -10,16 +10,18 @@ The code and data used in this study are publicly available in this repository f
 
 ## Data Collection
 From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos representing diverse ethnicities, genders, and ages. These videos were further processed to crop the upper body region, forming the basis of our real video dataset.
-<video width="320" height="240" controls>
-  <source src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887.mp4" type="video/mp4">
-</video>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
 
-<video width="320" height="240" controls>
-  <source src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_19.mp4" type="video/mp4">
-</video>
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" width="30%" />
 
-<video width="320" height="240" controls>
-  <source src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_8.mp4" type="video/mp4">
-</video>
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif2.gif" alt="gif2" width="30%" />
 
-<!-- 依此類推，改成你的六個視頻的 raw 連結 -->
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif3.gif" alt="gif3" width="30%" />
+
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif4.gif" alt="gif4" width="30%" />
+
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif5.gif" alt="gif5" width="30%" />
+
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif6.gif" alt="gif6" width="30%" />
+
+</div>
