@@ -24,6 +24,33 @@ The code and data used in this study are publicly available in this repository f
 </table>
 
 **Fake Video–Real Audio (FV-RA)** This category consists of fake videos created by synthesizing visual content conditioned on authentic audio. We begin by extracting audio from real videos and converting it into WAV format. RetinaFace is then employed to detect and crop representative facial frames. Using five digital human generation techniques—Sonic, Hallo1, Hallo2, Echomimic, and V-Express—we produce a total of 25,000 forged videos. Modern adversaries can obtain both voice and facial data of targets, enabling highly convincing impersonation attacks. Compared to traditional face-swapping methods, these forgeries pose a more credible and serious threat. This subset provides researchers with valuable data to explore advanced identity deception scenarios.
+<div align="center">
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_10000_real_videos_10000%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_113_real_videos_113%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_2678_real_videos_2678%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_3023_real_videos_3023%2000_00_00-00_00_30.gif" width="200" />
+</div>
 
+<div align="center">
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_3056_real_videos_3056%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_6464_real_videos_6464%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_66_real_videos_66%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_9889_real_videos_9889%2000_00_00-00_00_30.gif" width="200" />
+</div>
+
+**Fake Video–Fake Audio (FV-FA)** This category encompasses both manipulated audio and video. We employed a state-of-the-art voice cloning method, CosyVoice 2. Specifically, we first generated manipulated text using a large language model. Then, by providing authentic audio–manipulated text pairs, the CosyVoice 2 model synthesized fake audio exhibiting the vocal characteristics of the target speaker. Subsequently, using Sonic, Hallo1, Hallo2, and Echomimic, we generated 25,000 forged videos based on this fake audio. This approach offers fraudsters a more flexible and realistic means of deception.
+<div align="center">
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/FAFV_real_3_FAFV_real_3%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/NEOreal_1898_NEOreal_1898%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/NEOreal_4217_NEOreal_4217%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/NEOreal_4829_NEOreal_4829%2000_00_00-00_00_30.gif" width="200" />
+</div>
+
+<div align="center">
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/NEOreal_4935_NEOreal_4935%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/video_855%20(4)%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/video_895%20(5)%2000_00_00-00_00_30.gif" width="200" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVFA/video_954%20(5)%2000_00_00-00_00_30.gif" width="200" />
+</div>
 
 
