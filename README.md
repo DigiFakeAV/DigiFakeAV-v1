@@ -10,18 +10,18 @@ The code and data used in this study are publicly available in this repository f
 
 ## Data Collection
 From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos representing diverse ethnicities, genders, and ages. These videos were further processed to crop the upper body region, forming the basis of our real video dataset.
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" width="30%" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" width="25%" style="object-fit: contain;" />
 
-  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_19%2000_00_00-00_00_30.gif" alt="gif2" width="30%" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_19%2000_00_00-00_00_30.gif" alt="gif2" width="25%" style="object-fit: contain;" />
 
-  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_8%2000_00_00-00_00_30.gif" alt="gif3" width="30%" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_8%2000_00_00-00_00_30.gif" alt="gif3" width="25%" style="object-fit: contain;" />
 
-  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_9407%2000_00_00-00_00_30.gif" alt="gif4" width="30%" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9407%2000_00_00-00_00_30.gif" alt="gif4" width="25%" style="object-fit: contain;" />
 
-  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_9822%2000_00_00-00_00_30.gif" alt="gif5" width="30%" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9822%2000_00_00-00_00_30.gif" alt="gif5" width="25%" style="object-fit: contain;" />
 
-  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_9995%2000_00_00-00_00_30.gif" alt="gif6" width="30%" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9995%2000_00_00-00_00_30.gif" alt="gif6" width="25%" style="object-fit: contain;" />
 
 </div>
