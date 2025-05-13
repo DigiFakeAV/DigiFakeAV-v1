@@ -10,3 +10,16 @@ The code and data used in this study are publicly available in this repository f
 
 ## Data Collection
 From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos representing diverse ethnicities, genders, and ages. These videos were further processed to crop the upper body region, forming the basis of our real video dataset.
+<video width="320" height="240" controls>
+  <source src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887.mp4" type="video/mp4">
+</video>
+
+<video width="320" height="240" controls>
+  <source src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_19.mp4" type="video/mp4">
+</video>
+
+<video width="320" height="240" controls>
+  <source src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_8.mp4" type="video/mp4">
+</video>
+
+<!-- 依此類推，改成你的六個視頻的 raw 連結 -->
