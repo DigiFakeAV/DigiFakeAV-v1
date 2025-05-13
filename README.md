@@ -110,3 +110,6 @@ We benchmark nine representative forgery detection methods using the DigiFakeAV 
 
 <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/QQ20250513-153623.png" />
 
+## Future Works
+Recent advances in digital human generation have led to increasingly realistic forgery techniques that surpass existing methods such as Sonic. These developments pose growing threats to multimedia security, social trust, and information integrity, calling for continued research and robust detection solutions. To address these evolving challenges, we plan to continuously update and expand the DigiFakeAV dataset by incorporating emerging forgery techniques and diverse real-world scenarios. This effort aims to enhance the dataset's comprehensiveness and representativeness, fostering novel research and ensuring that detection models remain effective against increasingly sophisticated deepfake attacks.
+
