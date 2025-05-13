@@ -18,17 +18,17 @@ From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos
   margin: 0 auto;
   max-width: 800px;">
   
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" style="width: 190px; height: auto; object-fit: contain;" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" style="width: 200px; height: auto; object-fit: contain;" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_19%2000_00_00-00_00_30.gif" alt="gif2" style="width: 190px; height: auto; object-fit: contain;" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_19%2000_00_00-00_00_30.gif" alt="gif2" style="width: 200px; height: auto; object-fit: contain;" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_8%2000_00_00-00_00_30.gif" alt="gif3" style="width: 190px; height: auto; object-fit: contain;" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_8%2000_00_00-00_00_30.gif" alt="gif3" style="width: 200px; height: auto; object-fit: contain;" />
   
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9407%2000_00_00-00_00_30.gif" alt="gif4" style="width: 190px; height: auto; object-fit: contain;" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9407%2000_00_00-00_00_30.gif" alt="gif4" style="width: 200px; height: auto; object-fit: contain;" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9822%2000_00_00-00_00_30.gif" alt="gif5" style="width: 190px; height: auto; object-fit: contain;" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9822%2000_00_00-00_00_30.gif" alt="gif5" style="width: 200px; height: auto; object-fit: contain;" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9995%2000_00_00-00_00_30.gif" alt="gif6" style="width: 190px; height: auto; object-fit: contain;" />
+  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_9995%2000_00_00-00_00_30.gif" alt="gif6" style="width: 200px; height: auto; object-fit: contain;" />
 
 </div>
 
