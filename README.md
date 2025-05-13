@@ -23,6 +23,7 @@ The code and data used in this study are publicly available in this repository f
   </tr>
 </table>
 
+## Data Synthesis
 **Fake Video–Real Audio (FV-RA)** This category consists of fake videos created by synthesizing visual content conditioned on authentic audio. We begin by extracting audio from real videos and converting it into WAV format. RetinaFace is then employed to detect and crop representative facial frames. Using five digital human generation techniques—Sonic, Hallo1, Hallo2, Echomimic, and V-Express—we produce a total of 25,000 forged videos. Modern adversaries can obtain both voice and facial data of targets, enabling highly convincing impersonation attacks. Compared to traditional face-swapping methods, these forgeries pose a more credible and serious threat. This subset provides researchers with valuable data to explore advanced identity deception scenarios.
 <div align="center">
   <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/FVRA/real_videos_10000_real_videos_10000%2000_00_00-00_00_30.gif" width="200" />
