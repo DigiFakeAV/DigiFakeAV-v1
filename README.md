@@ -69,10 +69,10 @@ Sonic employs time-aware fusion across video segments to disentangle head motion
 **EchoMimic**:  
 By integrating hybrid conditioning of audio and facial keypoints, and employing regional mapping alongside motion synchronization strategies, this method generates deepfake videos featuring highly natural facial expressions and stable audio-visual synchronization.
 
-**Hallo** [@xu2024hallohierarchicalaudiodrivenvisual]:  
+**Hallo**:  
 A latent diffusion model with hierarchical audio-driven visual synthesis is employed, combined with a multi-level cross-attention mechanism to achieve finer audio-visual alignment, thereby enhancing the continuity and realism of the synthesized videos.
 
-**Hallo2** [@cui2024hallo2longdurationhighresolutionaudiodriven]:  
+**Hallo2**:  
 Hallo2 is optimized for long-duration and ultra-high-resolution video generation. Employing vector quantization (VQ)-based encoding combined with a temporal alignment mechanism, it enables stable synthesis of long-form deepfake videos.
 
 **CosyVoice 2**:  
