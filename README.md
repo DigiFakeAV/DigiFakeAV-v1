@@ -60,13 +60,13 @@ We implemented a dedicated video processing pipeline to segment all MP4, AVI, an
 <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/figure03.png" />
 
 ## Dataset Generation Methods
-**V-Express** [@wang2024vexpressconditionaldropoutprogressive]:  
+**V-Express**:  
 By progressively dropping strong signals, the proposed strategy effectively balances multimodal conditions, enabling weak signals to gradually participate in control, thereby achieving coordinated pose, image, and audio-driven generation of highly synchronized deepfake videos.
 
-**Sonic** [@ji2024sonicshiftingfocusglobal]:  
+**Sonic**:  
 Sonic employs time-aware fusion across video segments to disentangle head motion from facial expressions. By leveraging long-range audio context, it achieves continuous and natural motion synthesis, enabling the generation of coherent and realistic deepfake videos.
 
-**EchoMimic** [@chen2024echomimiclifelikeaudiodrivenportrait]:  
+**EchoMimic**:  
 By integrating hybrid conditioning of audio and facial keypoints, and employing regional mapping alongside motion synchronization strategies, this method generates deepfake videos featuring highly natural facial expressions and stable audio-visual synchronization.
 
 **Hallo** [@xu2024hallohierarchicalaudiodrivenvisual]:  
@@ -75,37 +75,37 @@ A latent diffusion model with hierarchical audio-driven visual synthesis is empl
 **Hallo2** [@cui2024hallo2longdurationhighresolutionaudiodriven]:  
 Hallo2 is optimized for long-duration and ultra-high-resolution video generation. Employing vector quantization (VQ)-based encoding combined with a temporal alignment mechanism, it enables stable synthesis of long-form deepfake videos.
 
-**CosyVoice 2** [@du2024cosyvoice2scalablestreaming]:  
+**CosyVoice 2**:  
 By employing multi-stage semantic decoding and conditional flow matching techniques, along with a unified streaming and non-streaming language model design, this approach provides an efficient and stable foundation for speech synthesis in audio-driven digital human videos.
 
 ## Benchmark
 We benchmark nine representative forgery detection methods using the DigiFakeAV dataset，These methods encompass six distinct cate-gories: Basic (Naive), Spatial, Temporal, Frequency, Hybrid Domain, and Multi-modal approaches. Please refer to our paper for more information.
 
-- **Meso4** [@Afchar_2018]:  
+- **Meso4**:  
   A lightweight convolutional neural network architecture designed for efficient extraction of facial forgery features, facilitating rapid deepfake detection.
 
-- **MesoInception4** [@Afchar_2018]:  
+- **MesoInception4**:  
   An extension of Meso4 that integrates Inception modules to enhance multi-scale feature representation and capture more discriminative cues.
 
-- **Xception-c23** [@rössler2019faceforensicslearningdetectmanipulated]:  
+- **Xception-c23**:  
   A deepfake detection approach based on the Xception architecture, leveraging depthwise separable convolutions for improved feature extraction and model efficiency.
 
-- **Capsule** [@nguyen2019usecapsulenetworkdetect]:  
+- **Capsule**:  
   A classification method employing capsule networks to preserve hierarchical pose relationships and improve robustness against spatial transformations.
 
-- **HeadPose** [@yang2018exposingdeepfakesusing]:  
+- **HeadPose**:  
   A technique that utilizes head pose estimation as discriminative features for classification between genuine and forged videos.
 
-- **F3-Net** [@qian2020thinkingfrequencyfaceforgery]:  
+- **F3-Net**:  
   A method that discriminates forged videos by extracting statistical features from the local frequency domain, effectively capturing subtle forgery artifacts.
 
-- **Cross Efficient ViT** [@Coccomini_2022]:  
+- **Cross Efficient ViT**:  
   An approach that incorporates ViT architectures augmented with a voting mechanism to robustly identify deepfake content.
 
-- **SFIConv** [@10286083]:  
+- **SFIConv**:  
   A method to combine information from the spatial and frequency domains using a modified convolutional backbone network to enhance detection capabilities of counterfeit features.
 
-- **SSVF** [@feng2023selfsupervisedvideoforensicsaudiovisual]:  
+- **SSVF**:  
   A framework exploiting the intrinsic synchronization between visual and audio streams, employing autoregressive models to learn temporal dependencies characteristic of authentic videos and detect anomalies effectively.
 
 <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/QQ20250513-153623.png" />
