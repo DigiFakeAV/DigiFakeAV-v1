@@ -16,7 +16,7 @@ From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos
   justify-content: center; 
   gap: 10px;
   margin: 0 auto;
-  max-width: 660px;">
+  max-width: 800px;">
   
   <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" style="width: 200px; height: auto; object-fit: contain;" />
 
