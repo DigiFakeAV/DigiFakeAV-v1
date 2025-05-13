@@ -14,14 +14,14 @@ From the pool of nearly 40,000 clean video clips, we selected 10,000 real videos
 
   <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/real_videos_1887%2000_00_00-00_00_30.gif" alt="gif1" width="30%" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif2.gif" alt="gif2" width="30%" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_19%2000_00_00-00_00_30.gif" alt="gif2" width="30%" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif3.gif" alt="gif3" width="30%" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_8%2000_00_00-00_00_30.gif" alt="gif3" width="30%" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif4.gif" alt="gif4" width="30%" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_9407%2000_00_00-00_00_30.gif" alt="gif4" width="30%" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif5.gif" alt="gif5" width="30%" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_9822%2000_00_00-00_00_30.gif" alt="gif5" width="30%" />
 
-  <img src="https://raw.githubusercontent.com/DigiFakeAV/DigiFakeAV-v1/main/assets/your_gif6.gif" alt="gif6" width="30%" />
+  <img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/real_videos_9995%2000_00_00-00_00_30.gif" alt="gif6" width="30%" />
 
 </div>
