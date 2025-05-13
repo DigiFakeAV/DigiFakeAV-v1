@@ -56,4 +56,5 @@ The code and data used in this study are publicly available in this repository f
 ## Benchmark
 
 We benchmark nine representative forgery detection methods using the DigiFakeAV dataset，These methods encompass six distinct cate-gories: Basic (Naive), Spatial, Temporal, Frequency, Hybrid Domain, and Multi-modal approaches. Please refer to our paper for more information.
+<img src="https://github.com/DigiFakeAV/DigiFakeAV-v1/blob/main/assets/QQ20250513-153623.png" />
 
