@@ -1,1 +1,0 @@
-The supplementary material for Beyond Face Swapping: A Diffusion-Based Digital Human Benchmark for Multimodal Deepfake Detection
