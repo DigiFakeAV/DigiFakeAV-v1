@@ -218,3 +218,263 @@ Hallo2 is optimized for long-duration and ultra-high-resolution video generation
 **CosyVoice 2**
 By employing multi-stage semantic decoding and conditional flow matching techniques, along with a unified streaming and non-streaming language model design, this approach provides an efficient and stable foundation for speech synthesis in audio-driven digital human videos.
 
+---
+
+## 🛠️ Installation
+
+```bash
+# Step 1: Clone the repository
+git clone https://github.com/DigiFakeAV/DigiFakeAV-v1.git
+cd DigiFakeAV-v1
+
+# Step 2: Create and activate a conda environment
+conda create -n digifakeav python=3.9 -y
+conda activate digifakeav
+
+# Step 3: Install required Python dependencies
+pip install numpy opencv-python
+
+# Step 4: Ensure FFmpeg is installed and accessible
+# Ubuntu / Debian
+sudo apt-get install ffmpeg
+
+# macOS (via Homebrew)
+brew install ffmpeg
+
+# Windows: download from https://ffmpeg.org/download.html
+```
+
+---
+
+## 📂 Data Preparation & Reconstruction
+
+### 📥 Step 1 — Download the Dataset
+
+Visit the [DigiFakeAV Hugging Face page](https://huggingface.co/datasets/cambrain/DigiFakeAV/tree/main) and download the desired subset.
+
+Each video sample is stored as a **set of binary files** with a shared prefix (e.g., `real_videos_1`):
+
+```
+DigiFakeAV_real_1_500/
+├── real_videos_1.frames.npy       # Raw frame data (uint8, shape: [N, H, W, 3])
+├── real_videos_1.height.txt       # Frame height (e.g., 512)
+├── real_videos_1.width.txt        # Frame width  (e.g., 512)
+├── real_videos_1.num_frames.txt   # Total number of frames
+├── real_videos_1.audio.wav        # Corresponding audio track
+├── real_videos_2.frames.npy
+├── real_videos_2.audio.wav
+└── ...
+```
+
+> **Note:** Each `.frames.npy` file stores raw RGB pixel values as a flattened `uint8` array.  
+> It must be reshaped to `(num_frames, height, width, 3)` before use.
+
+---
+
+### 🔧 Step 2 — Reconstruct MP4 Videos
+
+After downloading, use the following script to reconstruct `.mp4` videos from the binary files.
+
+**Save as `reconstruct.py`:**
+
+```python
+import numpy as np
+import cv2
+import subprocess
+import os
+import glob
+
+
+def frames_to_temp_mp4(prefix, fps=25):
+    """
+    Read frame binary files and encode them into a temporary silent MP4.
+
+    Args:
+        prefix (str): File path prefix, e.g. 'DigiFakeAV_real_1_500/real_videos_1'
+        fps    (int): Output frame rate (default: 25)
+
+    Returns:
+        str: Path to the temporary silent MP4 file
+    """
+    h = int(open(prefix + ".height.txt").read().strip())
+    w = int(open(prefix + ".width.txt").read().strip())
+    n = int(open(prefix + ".num_frames.txt").read().strip())
+
+    frames = np.fromfile(prefix + ".frames.npy", dtype=np.uint8).reshape(n, h, w, 3)
+
+    temp_mp4 = prefix + "_temp.mp4"
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    out = cv2.VideoWriter(temp_mp4, fourcc, fps, (w, h))
+
+    for frame in frames:
+        out.write(frame)
+    out.release()
+
+    return temp_mp4
+
+
+def mux_video_audio(video_path, audio_path, out_path):
+    """
+    Mux a silent video and an audio track into a single MP4 using FFmpeg.
+
+    Args:
+        video_path (str): Path to the silent video file
+        audio_path (str): Path to the .wav audio file
+        out_path   (str): Path for the output muxed MP4
+    """
+    cmd = [
+        "ffmpeg",
+        "-y",                  # Overwrite output without prompting
+        "-i", video_path,      # Input: silent video
+        "-i", audio_path,      # Input: audio track
+        "-c:v", "copy",        # Copy video stream without re-encoding
+        "-c:a", "aac",         # Encode audio to AAC
+        "-shortest",           # Trim to the shorter of video/audio
+        out_path,
+    ]
+    subprocess.run(cmd, check=True)
+
+
+def reconstruct_mp4(prefix, fps=25):
+    """
+    Full reconstruction pipeline: frames + audio -> final MP4.
+
+    Steps:
+      1. Read .frames.npy / .height.txt / .width.txt / .num_frames.txt
+      2. Encode frames into a temporary silent MP4
+      3. Mux with the corresponding .audio.wav
+      4. Remove the temporary silent MP4
+
+    Args:
+        prefix (str): File path prefix, e.g. 'DigiFakeAV_real_1_500/real_videos_1'
+        fps    (int): Output frame rate (default: 25)
+
+    Output:
+        Saves reconstructed video to: <prefix>_reconstructed.mp4
+    """
+    temp_mp4  = frames_to_temp_mp4(prefix, fps=fps)
+    audio_path = prefix + ".audio.wav"
+    out_mp4   = prefix + "_reconstructed.mp4"
+
+    mux_video_audio(temp_mp4, audio_path, out_mp4)
+    os.remove(temp_mp4)  # Clean up the temporary silent MP4
+
+    print(f"[OK] Reconstructed: {out_mp4}")
+
+
+# ──────────────────────────────────────────────
+# Single-sample example
+# ──────────────────────────────────────────────
+reconstruct_mp4("DigiFakeAV_real_1_500/real_videos_1")
+
+
+# ──────────────────────────────────────────────
+# Batch reconstruction example
+# Matches all prefixes that have a paired .audio.wav
+# ──────────────────────────────────────────────
+for prefix in sorted(glob.glob("DigiFakeAV_real_1_500/real_videos_*")):
+    # Skip files that are themselves audio files
+    if prefix.endswith(".wav"):
+        continue
+    # Skip auxiliary metadata files
+    if any(prefix.endswith(ext) for ext in
+           [".npy", ".txt", ".mp4"]):
+        continue
+    # Only reconstruct if the paired audio file exists
+    if os.path.exists(prefix + ".audio.wav"):
+        reconstruct_mp4(prefix)
+```
+
+---
+
+### ▶️ Step 3 — Run the Script
+
+```bash
+# Single sample
+python reconstruct.py
+
+# Or batch-process an entire folder
+python - <<'EOF'
+import glob, os
+from reconstruct import reconstruct_mp4
+
+for prefix in sorted(glob.glob("DigiFakeAV_real_1_500/real_videos_*")):
+    if prefix.endswith((".wav", ".npy", ".txt", ".mp4")):
+        continue
+    if os.path.exists(prefix + ".audio.wav"):
+        reconstruct_mp4(prefix)
+EOF
+```
+
+---
+
+### 📁 Expected Output Structure
+
+```
+DigiFakeAV_real_1_500/
+├── real_videos_1.frames.npy
+├── real_videos_1.audio.wav
+├── real_videos_1.height.txt
+├── real_videos_1.width.txt
+├── real_videos_1.num_frames.txt
+├── real_videos_1_reconstructed.mp4   ← final output
+├── real_videos_2.frames.npy
+├── real_videos_2.audio.wav
+├── real_videos_2_reconstructed.mp4   ← final output
+└── ...
+```
+
+---
+
+### ⚠️ Important Notes
+
+| Item | Details |
+|:----:|:--------|
+| **FFmpeg** | Must be installed and accessible via `PATH` |
+| **Audio pairing** | Each `.frames.npy` requires a matching `.audio.wav` with the same prefix |
+| **Frame shape** | Raw data is reshaped to `(num_frames, height, width, 3)` using the metadata files |
+| **Codec** | Video is encoded with `mp4v` (OpenCV); audio is encoded with `AAC` (FFmpeg) |
+| **`-shortest` flag** | Ensures output duration matches the shorter of video or audio to avoid sync issues |
+
+---
+
+## 🔭 Future Works
+
+- Release **DigiFakeAV-v2** with additional and more diverse generation methods.
+- Release **DigiShield** model weights and inference code for public benchmarking.
+- Build an online **leaderboard** for standardized evaluation on DigiFakeAV.
+
+---
+
+## 😄 Acknowledgement
+
+We sincerely thank the authors of
+[V-Express](https://github.com/tencent-ailab/V-Express),
+[Sonic](https://github.com/jixiaozhong/Sonic),
+[Hallo](https://github.com/fudan-generative-vision/hallo),
+[Hallo2](https://github.com/fudan-generative-vision/hallo2),
+[EchoMimic](https://github.com/BadToBest/EchoMimic), and
+[CosyVoice 2](https://github.com/FunAudioLLM/CosyVoice)
+for making their excellent work publicly available.
+
+---
+
+## 📜 Citation
+
+If you find **DigiFakeAV** useful in your research, please cite our paper:
+
+```bibtex
+@inproceedings{digifakeav2026,
+  title     = {Beyond Face Swapping: A Diffusion-Based Digital Human Benchmark
+               for Multimodal Deepfake Detection},
+  booktitle = {Proceedings of the IEEE International Conference on Acoustics,
+               Speech and Signal Processing (ICASSP)},
+  year      = {2026}
+}
+```
+
+---
+
+<div align="center">
+  <sub>© 2025 DigiFakeAV Team. All rights reserved.</sub>
+</div>
