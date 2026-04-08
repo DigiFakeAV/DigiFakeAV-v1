@@ -9,7 +9,7 @@
 <a href="https://hubeiwuhanliu.github.io/DigiFakeAV.github.io/" target="_blank">
   <img alt="Website" src="https://img.shields.io/badge/🌎_Project_Page-DigiFakeAV-blue.svg" height="25">
 </a>
-<a href="https://huggingface.co/datasets/DigiFakeAV/DigiFakeAV-v1" target="_blank">
+<a href="https://huggingface.co/datasets/cambrain/DigiFakeAV/tree/main" target="_blank">
   <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" height="25">
 </a>
 <a href="https://github.com/DigiFakeAV/DigiFakeAV-v1" target="_blank">
