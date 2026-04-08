@@ -22,9 +22,8 @@
 ---
 
 ## 📢 News
-- **2026-03**: Dataset v1.0  are publicly released.
+- **2026-03**: Dataset v1.0 is publicly released.
 - **2026-01**: DigiFakeAV is accepted to **ICASSP 2026** 🎉
-
 
 ---
 
@@ -46,7 +45,7 @@
   `RV-RA` (Real Video–Real Audio),
   `FV-RA` (Fake Video–Real Audio),
   `FV-FA` (Fake Video–Fake Audio).
-- **Challenging Benchmark:** State-of-the-art detection models suffer over **30% performance drop** on DigiFakeAV compared to existing datasets.
+- **Challenging Benchmark:** Detection models suffer over **30% performance drop** on DigiFakeAV compared to existing datasets.
 - **DigiShield Detector:** We propose DigiShield, an audio-visual fusion detection model achieving state-of-the-art performance on DF-TIMIT and establishing a strong baseline on DigiFakeAV.
 
 ---
@@ -74,7 +73,7 @@
 
 > In recent years, deepfake technology has advanced rapidly, yet its misuse poses serious threats to information security and public safety. Existing datasets have mainly focused on traditional face-swapping techniques, failing to reflect the emerging trend of digital human generation methods. These diffusion-based approaches can generate highly realistic videos from speech and target images, offering greater flexibility, stealthiness, and multimodal coherence, thus challenging current detection strategies.
 >
-> To address this issue, we introduce **DigiFakeAV**, the first large-scale multimodal deepfake dataset based on digital human synthesis. It contains 60,000 videos (8.4 million frames) with diverse identities across nationalities, skin tones, and genders. Experimental results show that state-of-the-art detection models suffer over 30% performance drop on DigiFakeAV, and user studies confirm that the fake videos are nearly indistinguishable from real ones. Furthermore, we propose **DigiShield**, an audio-visual fusion detection model that achieves state-of-the-art performance on DF-TIMIT and establishes a benchmark for DigiFakeAV. This work presents the first systematic effort in constructing and evaluating a dataset tailored for diffusion-based digital human forgery, highlighting new research directions for robust deepfake detection.
+> To address this issue, we introduce DigiFakeAV, the first large-scale multimodal deepfake dataset based on digital human synthesis. It contains 60,000 videos (8.4 million frames) with diverse identities across nationalities, skin tones, and genders. Experimental results show that state-of-the-art detection models suffer over 30% performance drop on DigiFakeAV, and user studies confirm that the fake videos are nearly indistinguishable from real ones. Furthermore, we propose DigiShield, an audio-visual fusion detection model that achieves state-of-the-art performance on DF-TIMIT and establishes a benchmark for DigiFakeAV. This work presents the first systematic effort in constructing and evaluating a dataset tailored for diffusion-based digital human forgery, highlighting new research directions for robust deepfake detection.
 
 ---
 
@@ -219,4 +218,3 @@ Hallo2 is optimized for long-duration and ultra-high-resolution video generation
 **CosyVoice 2**
 By employing multi-stage semantic decoding and conditional flow matching techniques, along with a unified streaming and non-streaming language model design, this approach provides an efficient and stable foundation for speech synthesis in audio-driven digital human videos.
 
----
