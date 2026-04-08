@@ -444,20 +444,7 @@ DigiFakeAV_real_1_500/
 - Release **DigiShield** model weights and inference code for public benchmarking.
 - Build an online **leaderboard** for standardized evaluation on DigiFakeAV.
 
----
 
-## 😄 Acknowledgement
-
-We sincerely thank the authors of
-[V-Express](https://github.com/tencent-ailab/V-Express),
-[Sonic](https://github.com/jixiaozhong/Sonic),
-[Hallo](https://github.com/fudan-generative-vision/hallo),
-[Hallo2](https://github.com/fudan-generative-vision/hallo2),
-[EchoMimic](https://github.com/BadToBest/EchoMimic), and
-[CosyVoice 2](https://github.com/FunAudioLLM/CosyVoice)
-for making their excellent work publicly available.
-
----
 
 ## 📜 Citation
 
