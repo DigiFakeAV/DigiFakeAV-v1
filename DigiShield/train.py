@@ -137,11 +137,11 @@ if __name__ == '__main__':
     p.add_argument('--lr', type=float, default=1e-4)
     p.add_argument('--lrf', type=float, default=0.01)
     p.add_argument('--warmup', type=int, default=2)
-    p.add_argument('--num_frames', type=int, default=16)
+    p.add_argument('--num_frames', type=int, default=30)
     p.add_argument('--n_fusion', type=int, default=2)
     p.add_argument('--data-path', dest='data_path', type=str,
                    default='../DigiFakeAV_processed')
     p.add_argument('--model-name', default='DigiShield')
-    p.add_argument('--weights', type=str, default=',,/DigiShield/weights')
+    p.add_argument('--weights', type=str, default='../DigiShield/weights')
     p.add_argument('--device', default='0,7')
     main(p.parse_args())
