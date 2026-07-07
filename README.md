@@ -19,6 +19,42 @@
 
 </div>
 
+</div>
+
+---
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<!--  🔥 EYE-CATCHING DOWNLOAD BANNER  -->
+<!-- ══════════════════════════════════════════════════════════════════ -->
+
+<div align="center">
+
+### 🚀 Quick Download — Baidu Netdisk Mirror Now Available!
+
+<table>
+<tr>
+<td align="center" width="600">
+
+> **📦 Download the full DigiFakeAV dataset from Baidu Netdisk**
+>
+> 🔗 **Link:** <a href="https://pan.baidu.com/s/1w-aWIq1mycpV2q93Q-sF8Q"><b>https://pan.baidu.com/s/1w-aWIq1mycpV2q93Q-sF8Q</b></a>
+> 🔑 **Extraction Code:** <kbd><b>fetu</b></kbd>
+>
+> After downloading, preprocess the raw videos with our official script:
+> ```bash
+> python DigiShield/scripts/preprocess_dataset.py
+> ```
+> This will produce the standardized frame / audio / metadata layout used by **DigiShield** for training and evaluation.
+
+</td>
+</tr>
+</table>
+
+**🌐 Alternative mirrors:** [🤗 Hugging Face](https://huggingface.co/datasets/cambrain/DigiFakeAV/tree/main) &nbsp;|&nbsp; [📦 Baidu Netdisk (code: `fetu`)](https://pan.baidu.com/s/1w-aWIq1mycpV2q93Q-sF8Q)
+
+</div>
+
+---
 ---
 
 ## 📢 News
