@@ -133,24 +133,20 @@ def main(args):
         'loss': float(loss),
     }
 
-    # Clip-level 指標
     report("CLIP", y_clip, s_clip, out)
 
     y_vid, s_vid, dirs_vid = aggregate_video_level(s_clip, y_clip, dirs_clip)
     report("VIDEO", y_vid, s_vid, out)
 
-    # ---- save ----
     os.makedirs(args.out_dir, exist_ok=True)
     with open(os.path.join(args.out_dir, 'test_metrics.json'), 'w') as f:
         json.dump(out, f, indent=2, ensure_ascii=False)
 
-    # per-clip 分數
     with open(os.path.join(args.out_dir, 'test_scores_clip.tsv'), 'w') as f:
         f.write("video_dir\tlabel\tscore_fake\tpred\n")
         for i in range(len(y_clip)):
             f.write(f"{dirs_clip[i]}\t{int(y_clip[i])}\t{float(s_clip[i]):.6f}\t{int(s_clip[i]>=0.5)}\n")
 
-    # per-video 分數
     with open(os.path.join(args.out_dir, 'test_scores_video.tsv'), 'w') as f:
         f.write("video_dir\tlabel\tscore_fake\tpred\n")
         for i in range(len(y_vid)):

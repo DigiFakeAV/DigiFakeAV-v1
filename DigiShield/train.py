@@ -106,7 +106,7 @@ def main(args):
             torch.save({'state_dict': sd, 'auc': best_auc, 'epoch': epoch}, ckpt_best)
             print(f"💾 Best → {ckpt_best} (AUC={best_auc:.4f})")
 
-    print(f"\n✅ 訓練完成 | Best val AUC={best_auc:.4f} @ epoch {best_ep}")
+    print(f"\n✅ Training Complete | Best val AUC={best_auc:.4f} @ epoch {best_ep}")
 
     # ---- Test ----
     try:
