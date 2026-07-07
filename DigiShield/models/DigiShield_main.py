@@ -16,12 +16,11 @@ class SEBlock(nn.Module):
 
 
 def temporal_shift(x, fold_div=8):
-    # x: (B,C,T,H,W)
     B, C, T, H, W = x.shape
     fold = C // fold_div
     out = torch.zeros_like(x)
-    out[:, :fold, :-1] = x[:, :fold, 1:]           
-    out[:, fold:2*fold, 1:] = x[:, fold:2*fold, :-1]  
+    out[:, :fold, :-1] = x[:, :fold, 1:]
+    out[:, fold:2*fold, 1:] = x[:, fold:2*fold, :-1]
     out[:, 2*fold:] = x[:, 2*fold:]
     return out
 
@@ -53,7 +52,6 @@ class R2Plus1DBlock(nn.Module):
 
 
 class Visual3DBackbone(nn.Module):
-    """output: [B, D=1024, T', H', W']"""
     def __init__(self, out_dim=1024):
         super().__init__()
         self.stem = nn.Sequential(
@@ -77,13 +75,12 @@ class Visual3DBackbone(nn.Module):
         return nn.Sequential(*layers)
 
     def forward(self, x):
-        # x: [B,T,C,H,W] -> [B,C,T,H,W]
         if x.shape[1] != 3:
             x = x.permute(0, 2, 1, 3, 4).contiguous()
         x = self.stem(x)
         x = self.layer1(x); x = self.layer2(x)
         x = self.layer3(x); x = self.layer4(x)
-        return x  # [B, D, T', H', W']
+        return x
 
 
 class CBAM(nn.Module):
@@ -127,7 +124,6 @@ class AudioBottleneck(nn.Module):
 
 
 class Audio2DBackbone(nn.Module):
-    """output: [B, D=1024, H', W']"""
     def __init__(self, out_dim=1024):
         super().__init__()
         self.in_c = 64
@@ -155,19 +151,17 @@ class Audio2DBackbone(nn.Module):
         x = self.stem(x)
         x = self.layer1(x); x = self.layer2(x)
         x = self.layer3(x); x = self.layer4(x)
-        return x  # [B, D, H', W']
+        return x
 
 
 class MHA(nn.Module):
     def __init__(self, d, h=8, drop=0.1):
         super().__init__()
-        self.attn = nn.MultiheadAttention(d, h, dropout=drop)  
+        self.attn = nn.MultiheadAttention(d, h, dropout=drop)
     def forward(self, q, k, v):
-        q = q.transpose(0, 1)
-        k = k.transpose(0, 1)
-        v = v.transpose(0, 1)
+        q = q.transpose(0, 1); k = k.transpose(0, 1); v = v.transpose(0, 1)
         out, _ = self.attn(q, k, v)
-        return out.transpose(0, 1)  
+        return out.transpose(0, 1)
 
 
 class FFN(nn.Module):
@@ -190,7 +184,6 @@ class FusionBlock(nn.Module):
 
     def forward(self, x, ctx):
         x = x + self.cross(self.ln_q1(x), self.ln_kv1(ctx), self.ln_kv1(ctx))
-
         x_ = self.ln_s1(x); x = x + self.self1(x_, x_, x_)
         x_ = self.ln_s2(x); x = x + self.self2(x_, x_, x_)
         x = x + self.ffn(self.ln_ff(x))
@@ -202,7 +195,6 @@ class MultimodalSpatiotemporalFusion(nn.Module):
         super().__init__()
         self.v_blocks = nn.ModuleList([FusionBlock(d, h, drop) for _ in range(n)])
         self.a_blocks = nn.ModuleList([FusionBlock(d, h, drop) for _ in range(n)])
-
         self.gate = nn.Sequential(nn.Linear(d*2, d), nn.Sigmoid())
 
     def forward(self, fv, fa):
@@ -210,22 +202,21 @@ class MultimodalSpatiotemporalFusion(nn.Module):
             fv_new = vb(fv, fa)
             fa_new = ab(fa, fv)
             fv, fa = fv_new, fa_new
- 
         v_vec = fv.mean(1); a_vec = fa.mean(1)
         g = self.gate(torch.cat([v_vec, a_vec], dim=-1))
         z = g * v_vec + (1 - g) * a_vec
-        return z, v_vec, a_vec 
-
+        return z, v_vec, a_vec
 
 
 class DigiShield(nn.Module):
-    def __init__(self, d=1024, n_fusion=2, num_classes=2, dropout=0.5):
+    def __init__(self, d=1024, n_fusion=2, num_classes=2, dropout=0.5,
+                 max_v_tokens=2048, max_a_tokens=512):
         super().__init__()
         self.visual = Visual3DBackbone(out_dim=d)
         self.audio = Audio2DBackbone(out_dim=d)
 
-        self.v_pos = nn.Parameter(torch.zeros(1, 1024, d))  
-        self.a_pos = nn.Parameter(torch.zeros(1, 256, d))
+        self.v_pos = nn.Parameter(torch.zeros(1, max_v_tokens, d))
+        self.a_pos = nn.Parameter(torch.zeros(1, max_a_tokens, d))
         nn.init.trunc_normal_(self.v_pos, std=0.02)
         nn.init.trunc_normal_(self.a_pos, std=0.02)
 
@@ -234,22 +225,27 @@ class DigiShield(nn.Module):
         self.v_proj = nn.Sequential(nn.Linear(d, d), nn.GELU(), nn.Linear(d, 256))
         self.a_proj = nn.Sequential(nn.Linear(d, d), nn.GELU(), nn.Linear(d, 256))
 
-        # Down + FC (Final Decision Layer)
         self.down = nn.Sequential(
             nn.Linear(d, 512), nn.LayerNorm(512), nn.GELU(), nn.Dropout(dropout))
         self.fc = nn.Linear(512, num_classes)
 
     def _flatten(self, feat, pos):
-        b, d = feat.shape[0], feat.shape[1]
-        x = feat.flatten(2).transpose(1, 2)  
-        n = x.shape[1]
-        return x + pos[:, :n]
+        x = feat.flatten(2).transpose(1, 2)   
+        N = x.shape[1]
+        N_pos = pos.shape[1]
+        if N > N_pos:
+            pos_ = pos.transpose(1, 2)                              
+            pos_ = F.interpolate(pos_, size=N, mode='linear', align_corners=False)
+            pos_ = pos_.transpose(1, 2)                           
+            return x + pos_
+        else:
+            return x + pos[:, :N]
 
     def forward(self, video, audio):
-        fv_map = self.visual(video)   
-        fa_map = self.audio(audio)    
-        fv = self._flatten(fv_map, self.v_pos) 
-        fa = self._flatten(fa_map, self.a_pos) 
+        fv_map = self.visual(video)
+        fa_map = self.audio(audio)
+        fv = self._flatten(fv_map, self.v_pos)
+        fa = self._flatten(fa_map, self.a_pos)
 
         z, v_vec, a_vec = self.fusion(fv, fa)
         logits = self.fc(self.down(z))
