@@ -44,7 +44,7 @@
 > ```bash
 > python DigiShield/scripts/preprocess_dataset.py
 > ```
-> This will produce the standardized frame / audio / metadata layout used by **DigiShield** for training and evaluation.
+> This will produce the standardized frame / audio layout used by **DigiShield** for training and evaluation.
 
 </td>
 </tr>
